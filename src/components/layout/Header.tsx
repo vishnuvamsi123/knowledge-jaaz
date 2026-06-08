@@ -3,51 +3,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Header height — change this one value to make the banner taller or shorter
+const HEADER_HEIGHT = '90px';
+
 const Header: React.FC = () => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   return (
     <>
-      {/* ── FIXED HEADER — logo only, full width, centered ── */}
+      {/* ── FIXED HEADER ── */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-center"
+        className="fixed top-0 left-0 right-0 z-50 w-full overflow-hidden"
         style={{
-          background: 'rgba(2,11,26,0.92)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(16,185,129,0.12)',
-          boxShadow: '0 4px 40px rgba(0,0,0,0.4)',
+          height: HEADER_HEIGHT,
+          background: '#020b1a',
+          borderBottom: '1px solid rgba(16,185,129,0.14)',
+          boxShadow: '0 4px 32px rgba(0,0,0,0.5)',
         }}
       >
         {/* Top emerald accent line */}
         <div
-          className="absolute top-0 left-0 w-full h-[2px] pointer-events-none"
+          className="absolute top-0 left-0 w-full h-[2px] z-10 pointer-events-none"
           style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.7), rgba(20,184,166,0.4), transparent)' }}
         />
 
-        {/* LOGO — full width, centered, big */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="w-full"
-        >
-          <img
-            src={`${basePath}/logo.png`}
-            alt="Knowledge Jaaz"
-            style={{
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              filter: 'drop-shadow(0 0 24px rgba(16,185,129,0.45))',
-            }}
-          />
-        </motion.div>
+        {/* LOGO — stretches exactly to fill the header bar left-to-right */}
+        <motion.img
+          src={`${basePath}/logo.png`}
+          alt="Knowledge Jaaz"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'fill',   /* stretches to fill full width & height */
+            display: 'block',
+            filter: 'drop-shadow(0 0 20px rgba(16,185,129,0.3))',
+          }}
+        />
       </header>
 
-      {/* Spacer to push page content below the fixed header */}
-      {/* Spacer — matches logo height (logo aspect ratio ~4:1 so height ≈ 25vw) */}
-      <div style={{ height: '25vw', maxHeight: '220px', minHeight: '80px' }} />
+      {/* Spacer — same height as the header */}
+      <div style={{ height: HEADER_HEIGHT }} />
     </>
   );
 };
