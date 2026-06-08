@@ -5,99 +5,140 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/hero/HeroSection';
 
-// Lazy load heavy sections for performance
-const MarketDashboard = dynamic(() => import('@/components/market/MarketDashboard'), { ssr: false });
-const KnowledgeHub = dynamic(() => import('@/components/knowledge/KnowledgeHub'), { ssr: false });
-const PennyStockSection = dynamic(() => import('@/components/analyzer/PennyStockSection'), { ssr: false });
-const FundamentalAnalyzer = dynamic(() => import('@/components/analyzer/FundamentalAnalyzer'), { ssr: false });
-const BestPicks = dynamic(() => import('@/components/stocks/BestPicks'), { ssr: false });
-const ComparisonTool = dynamic(() => import('@/components/stocks/ComparisonTool'), { ssr: false });
-const AIAssistant = dynamic(() => import('@/components/ai/AIAssistant'), { ssr: false });
-const NewsSection = dynamic(() => import('@/components/news/NewsSection'), { ssr: false });
-const CommunitySection = dynamic(() => import('@/components/community/CommunitySection'), { ssr: false });
-const TrustSection = dynamic(() => import('@/components/trust/TrustSection'), { ssr: false });
+// Lazy load heavy sections — each has a min-height placeholder to prevent scroll jumping
+const MarketDashboard    = dynamic(() => import('@/components/market/MarketDashboard'),     { ssr: false });
+const KnowledgeHub       = dynamic(() => import('@/components/knowledge/KnowledgeHub'),     { ssr: false });
+const PennyStockSection  = dynamic(() => import('@/components/analyzer/PennyStockSection'), { ssr: false });
+const FundamentalAnalyzer= dynamic(() => import('@/components/analyzer/FundamentalAnalyzer'),{ ssr: false });
+const BestPicks          = dynamic(() => import('@/components/stocks/BestPicks'),            { ssr: false });
+const ComparisonTool     = dynamic(() => import('@/components/stocks/ComparisonTool'),       { ssr: false });
+const AIAssistant        = dynamic(() => import('@/components/ai/AIAssistant'),              { ssr: false });
+const NewsSection        = dynamic(() => import('@/components/news/NewsSection'),            { ssr: false });
+const CommunitySection   = dynamic(() => import('@/components/community/CommunitySection'),  { ssr: false });
+const TrustSection       = dynamic(() => import('@/components/trust/TrustSection'),          { ssr: false });
+
+// Thin divider between sections
+function Divider() {
+  return (
+    <div
+      className="w-full h-px mx-auto max-w-6xl"
+      style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.12), transparent)' }}
+    />
+  );
+}
+
+// Wrapper that prevents scroll-anchor jumping when lazy content loads in
+function SectionWrapper({ id, children, style }: { id: string; children: React.ReactNode; style?: React.CSSProperties }) {
+  return (
+    <section
+      id={id}
+      className="section-padding"
+      style={{ overflowAnchor: 'none', minHeight: '300px', ...style }}
+    >
+      {children}
+    </section>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="min-h-screen" style={{ background: '#040C1E' }}>
+    <main
+      className="min-h-screen"
+      style={{ background: '#020b1a', overflowAnchor: 'none' }}
+    >
       <Header />
 
-      {/* Section 1: Hero */}
+      {/* Section 1: Hero — includes full-width logo banner + hero content */}
       <section id="home">
         <HeroSection />
       </section>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 2: Live Market Dashboard */}
-      <section id="markets" className="section-padding">
+      <SectionWrapper id="markets">
         <MarketDashboard />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 3: Knowledge Hub */}
-      <section id="learn" className="section-padding" style={{ background: 'linear-gradient(180deg, #040C1E 0%, #060F22 100%)' }}>
+      <SectionWrapper
+        id="learn"
+        style={{ background: 'linear-gradient(180deg, #020b1a 0%, #060f22 100%)' }}
+      >
         <KnowledgeHub />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
-      {/* Section 4: Penny Stock Analyzer */}
-      <section id="penny-stocks" className="section-padding">
+      {/* Section 4: Penny Stocks */}
+      <SectionWrapper id="penny-stocks">
         <PennyStockSection />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 5: Fundamental Analyzer */}
-      <section id="analyzer" className="section-padding" style={{ background: 'linear-gradient(180deg, #040C1E 0%, #071739 100%)' }}>
+      <SectionWrapper
+        id="analyzer"
+        style={{ background: 'linear-gradient(180deg, #020b1a 0%, #071739 100%)' }}
+      >
         <FundamentalAnalyzer />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
-      {/* Section 6: Best Stock Picks */}
-      <section id="stocks" className="section-padding">
+      {/* Section 6: Best Picks */}
+      <SectionWrapper id="stocks">
         <BestPicks />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 7: Comparison Tool */}
-      <section id="compare" className="section-padding" style={{ background: 'linear-gradient(180deg, #040C1E 0%, #060F22 100%)' }}>
+      <SectionWrapper
+        id="compare"
+        style={{ background: 'linear-gradient(180deg, #020b1a 0%, #060f22 100%)' }}
+      >
         <ComparisonTool />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 8: AI Assistant */}
-      <section id="ai-assistant" className="section-padding">
+      <SectionWrapper id="ai-assistant">
         <AIAssistant />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 9: News */}
-      <section id="news" className="section-padding" style={{ background: 'linear-gradient(180deg, #040C1E 0%, #060F22 100%)' }}>
+      <SectionWrapper
+        id="news"
+        style={{ background: 'linear-gradient(180deg, #020b1a 0%, #060f22 100%)' }}
+      >
         <NewsSection />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 10: Community */}
-      <section id="community" className="section-padding">
+      <SectionWrapper id="community">
         <CommunitySection />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       {/* Section 11: Trust */}
-      <section id="trust" className="section-padding" style={{ background: 'linear-gradient(180deg, #040C1E 0%, #071739 100%)' }}>
+      <SectionWrapper
+        id="trust"
+        style={{ background: 'linear-gradient(180deg, #020b1a 0%, #071739 100%)' }}
+      >
         <TrustSection />
-      </section>
+      </SectionWrapper>
 
-      <div className="section-divider" />
+      <Divider />
 
       <Footer />
     </main>

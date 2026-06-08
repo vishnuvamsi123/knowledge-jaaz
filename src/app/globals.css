@@ -26,8 +26,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;           /* 'smooth' can cause false jumps on lazy content load */
   -webkit-font-smoothing: antialiased;
+  overflow-anchor: none;           /* prevent browser scroll anchoring from jumping */
   -moz-osx-font-smoothing: grayscale;
 }
 
