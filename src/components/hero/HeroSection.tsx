@@ -54,9 +54,9 @@ const HeroSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
           style={{
-            width: '30%',
-            maxWidth: '340px',
-            minWidth: '160px',
+            width: '20%',
+            maxWidth: '240px',
+            minWidth: '120px',
             height: 'auto',
             objectFit: 'contain',
             display: 'block',
