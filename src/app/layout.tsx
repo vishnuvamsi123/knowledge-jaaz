@@ -37,6 +37,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Synchronous script — runs before browser scroll restoration fires */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+          window.addEventListener('load', function() { window.scrollTo(0, 0); });
+        `}} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

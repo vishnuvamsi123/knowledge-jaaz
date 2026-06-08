@@ -128,13 +128,15 @@ export default function AIAssistant() {
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false); // only scroll after user sends a msg
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-scroll to bottom whenever messages change
+  // Only auto-scroll INSIDE the chat box after user has interacted — never on initial mount
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
+    if (!hasInteracted) return;
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [messages, isTyping, hasInteracted]);
 
   async function handleSend(text?: string) {
     const msg = (text ?? input).trim();
@@ -161,9 +163,10 @@ export default function AIAssistant() {
       timestamp: new Date().toISOString(),
     };
 
+    setHasInteracted(true); // mark that user has now interacted
     setIsTyping(false);
     setMessages((prev) => [...prev, aiReply]);
-    inputRef.current?.focus();
+    // Don't call focus() here — it causes the browser to scroll to the input on mobile
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
