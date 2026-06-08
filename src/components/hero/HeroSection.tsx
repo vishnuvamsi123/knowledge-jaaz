@@ -44,43 +44,6 @@ const HeroSection: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-emerald-500/8 blur-[130px] pointer-events-none" />
 
       {/* ══════════════════════════════════════════════
-          FULL-WIDTH LOGO BANNER
-          ══════════════════════════════════════════════ */}
-      <div
-        className="relative w-full flex flex-col items-center justify-center pt-8 pb-6 sm:pt-10 sm:pb-8"
-        style={{ borderBottom: '1px solid rgba(16,185,129,0.1)' }}
-      >
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(16,185,129,0.06) 0%, transparent 100%)' }} />
-
-        <motion.div
-          initial={{ opacity: 0, y: -16, scale: 0.94 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="relative z-10 flex flex-col items-center gap-4 text-center px-4"
-        >
-          {/* Logo — full width, large, centered */}
-          <img
-            src={`${basePath}/logo.png`}
-            alt="Knowledge Jaaz"
-            className="w-auto mx-auto"
-            style={{
-              height: 'clamp(90px, 18vw, 200px)',
-              filter: 'drop-shadow(0 0 30px rgba(16,185,129,0.4)) drop-shadow(0 6px 24px rgba(0,0,0,0.7))',
-            }}
-          />
-
-          {/* Tagline */}
-          <p className="text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase text-center"
-            style={{ color: 'rgba(16,185,129,0.75)' }}>
-            Stock Market Knowledge for Every Middle-Class Family
-          </p>
-
-          {/* Decorative divider */}
-          <div className="w-40 sm:w-64 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.45), transparent)' }} />
-        </motion.div>
-      </div>
-
-      {/* ══════════════════════════════════════════════
           HERO CONTENT — fully centered layout
           ══════════════════════════════════════════════ */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
