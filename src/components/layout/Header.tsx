@@ -30,22 +30,24 @@ const Header: React.FC = () => {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="w-full flex items-center justify-center py-4 sm:py-5 px-4"
+          className="w-full"
         >
           <img
             src={`${basePath}/logo.png`}
             alt="Knowledge Jaaz"
-            className="w-auto mx-auto"
             style={{
-              height: 'clamp(64px, 12vw, 120px)',
-              filter: 'drop-shadow(0 0 24px rgba(16,185,129,0.45)) drop-shadow(0 4px 16px rgba(0,0,0,0.7))',
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              filter: 'drop-shadow(0 0 24px rgba(16,185,129,0.45))',
             }}
           />
         </motion.div>
       </header>
 
       {/* Spacer to push page content below the fixed header */}
-      <div style={{ height: 'clamp(96px, 16vw, 160px)' }} />
+      {/* Spacer — matches logo height (logo aspect ratio ~4:1 so height ≈ 25vw) */}
+      <div style={{ height: '25vw', maxHeight: '220px', minHeight: '80px' }} />
     </>
   );
 };
