@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import {
   MessageCircle,
   PlayCircle,
@@ -161,11 +160,9 @@ const Footer: React.FC = () => {
             <motion.div custom={0} variants={fadeUpVariants} className="space-y-6">
               {/* Logo */}
               <a href="/" className="flex items-center w-fit">
-                <Image
-                  src="/logo.png"
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo.png`}
                   alt="Knowledge Jaaz"
-                  width={240}
-                  height={78}
                   className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
                   style={{ filter: 'drop-shadow(0 0 10px rgba(16,185,129,0.2))' }}
                 />

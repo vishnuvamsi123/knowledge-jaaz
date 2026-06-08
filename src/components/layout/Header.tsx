@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import Image from 'next/image';
 
 interface NavLink {
   label: string;
@@ -111,14 +110,12 @@ const Header: React.FC = () => {
               transition={{ duration: 0.5, ease: 'easeOut' }}
               whileHover={{ scale: 1.03 }}
             >
-              <Image
-                src="/logo.png"
+              {/* Plain img so basePath prefix works correctly in GitHub Pages static export */}
+              <img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo.png`}
                 alt="Knowledge Jaaz"
-                width={220}
-                height={72}
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(16,185,129,0.15))' }}
-                priority
               />
             </motion.a>
 

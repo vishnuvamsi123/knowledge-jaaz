@@ -1,12 +1,17 @@
 import type { NextConfig } from "next";
 
+const BASE_PATH = process.env.NODE_ENV === 'production' ? '/knowledge-jaaz' : '';
+
 const nextConfig: NextConfig = {
   // Static export for GitHub Pages
   output: 'export',
 
-  // GitHub Pages serves from /knowledge-jaaz/ sub-path by default
-  // Change 'knowledge-jaaz' to your actual GitHub repo name
-  basePath: process.env.NODE_ENV === 'production' ? '/knowledge-jaaz' : '',
+  basePath: BASE_PATH,
+
+  // Expose basePath to client components
+  env: {
+    NEXT_PUBLIC_BASE_PATH: BASE_PATH,
+  },
 
   // Required: Next.js image optimization needs a server — use unoptimized for static export
   images: {
