@@ -99,7 +99,7 @@ const Header: React.FC = () => {
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/60 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18 lg:h-20">
+          <div className="flex items-center justify-between h-20 lg:h-24">
 
             {/* Logo */}
             <motion.a
@@ -114,8 +114,8 @@ const Header: React.FC = () => {
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo.png`}
                 alt="Knowledge Jaaz"
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
-                style={{ filter: 'drop-shadow(0 0 8px rgba(16,185,129,0.15))' }}
+                className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
+                style={{ filter: 'drop-shadow(0 0 10px rgba(16,185,129,0.25))' }}
               />
             </motion.a>
 
@@ -329,7 +329,7 @@ const Header: React.FC = () => {
       </header>
 
       {/* Spacer to prevent content from going under fixed header */}
-      <div className="h-18 lg:h-20" />
+      <div className="h-20 lg:h-24" />
     </>
   );
 };

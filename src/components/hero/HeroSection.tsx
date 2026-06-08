@@ -192,7 +192,7 @@ const StatCardComponent: React.FC<StatCardComponentProps> = ({ card }) => {
         }}
         className={`relative p-4 rounded-2xl border bg-gradient-to-br ${colors.gradient} ${colors.border} backdrop-blur-sm shadow-xl ${colors.glow} cursor-default group`}
         whileHover={{ scale: 1.05, y: -4 }}
-        style={{ minWidth: '160px' }}
+        style={{ minWidth: '140px', maxWidth: '180px' }}
       >
         <div className="flex items-start gap-3">
           <div className={`flex items-center justify-center w-10 h-10 rounded-xl ${colors.icon} text-lg flex-shrink-0`}>
@@ -279,7 +279,7 @@ const HeroSection: React.FC = () => {
         className="relative z-10 flex-1 flex flex-col"
       >
         <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 min-h-[calc(100vh-160px)] py-16 lg:py-20">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8 min-h-[calc(100dvh-72px)] py-8 sm:py-12 lg:py-20">
 
             {/* ── LEFT COLUMN: Text Content ── */}
             <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl w-full lg:max-w-none">
@@ -309,7 +309,7 @@ const HeroSection: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.08] tracking-tight mb-2"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.08] tracking-tight mb-2"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 <span className="text-white block">Learn Stock Market</span>
@@ -387,7 +387,7 @@ const HeroSection: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.55 }}
-                className="flex flex-col sm:flex-row flex-wrap gap-4 mt-10 justify-center lg:justify-start"
+                className="flex flex-row flex-wrap gap-3 mt-8 justify-center lg:justify-start"
               >
                 {STAT_CARDS.map((card) => (
                   <StatCardComponent key={card.label} card={card} />
@@ -431,7 +431,7 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
-              className="flex-1 flex flex-col items-center justify-center w-full max-w-xl lg:max-w-lg relative"
+              className="hidden lg:flex flex-1 flex-col items-center justify-center w-full max-w-xl lg:max-w-lg relative"
             >
               {/* Decorative glow behind chart */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
