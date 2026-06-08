@@ -27,9 +27,9 @@ const Header: React.FC = () => {
           style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.7), rgba(20,184,166,0.4), transparent)' }}
         />
 
-        {/* LOGO — stretches exactly to fill the header bar left-to-right */}
+        {/* LOGO BANNER — wide format, fills full width clearly */}
         <motion.img
-          src={`${basePath}/logo.png`}
+          src={`${basePath}/logo-banner.png`}
           alt="Knowledge Jaaz"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -37,9 +37,9 @@ const Header: React.FC = () => {
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'fill',   /* stretches to fill full width & height */
+            objectFit: 'cover',
+            objectPosition: 'center',
             display: 'block',
-            filter: 'drop-shadow(0 0 20px rgba(16,185,129,0.3))',
           }}
         />
       </header>
