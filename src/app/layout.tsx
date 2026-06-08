@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import ScrollReset from "@/components/ScrollReset";
 
 export const metadata: Metadata = {
   title: "Knowledge Jaaz — Learn Stock Market the Smart Way",
@@ -34,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -43,7 +44,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {/* Disables browser scroll restoration so page always starts at top */}
+        <ScrollReset />
+        {children}
+      </body>
     </html>
   );
 }
