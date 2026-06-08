@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Header height — change this one value to make the banner taller or shorter
-const HEADER_HEIGHT = '90px';
+const HEADER_HEIGHT = '140px';
 
 const Header: React.FC = () => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
