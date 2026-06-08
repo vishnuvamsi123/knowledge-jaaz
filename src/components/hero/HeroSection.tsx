@@ -44,10 +44,37 @@ const HeroSection: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-emerald-500/8 blur-[130px] pointer-events-none" />
 
       {/* ══════════════════════════════════════════════
+          LOGO BANNER — top of first page only, scrolls away
+          ══════════════════════════════════════════════ */}
+      <div className="relative z-10 w-full flex justify-center pt-6 pb-2">
+        <motion.img
+          src={`${basePath}/logo.png`}
+          alt="Knowledge Jaaz — Learn · Invest · Grow"
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+          style={{
+            width: '75%',
+            maxWidth: '860px',
+            minWidth: '280px',
+            height: 'auto',
+            objectFit: 'contain',
+            display: 'block',
+            filter: 'drop-shadow(0 0 28px rgba(16,185,129,0.35)) drop-shadow(0 4px 20px rgba(0,0,0,0.6))',
+          }}
+        />
+      </div>
+
+      {/* Thin divider under logo */}
+      <div className="relative z-10 flex justify-center pb-2">
+        <div className="w-3/4 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.3), rgba(236,72,153,0.2), transparent)' }} />
+      </div>
+
+      {/* ══════════════════════════════════════════════
           HERO CONTENT — fully centered layout
           ══════════════════════════════════════════════ */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="flex flex-col xl:flex-row items-center justify-center gap-12 py-12 sm:py-16 lg:py-20">
+        <div className="flex flex-col xl:flex-row items-center justify-center gap-12 py-10 sm:py-12 lg:py-16">
 
           {/* ── LEFT / CENTER: Text ── */}
           <div className="flex flex-col items-center xl:items-start text-center xl:text-left w-full xl:max-w-[580px]">
