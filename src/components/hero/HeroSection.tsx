@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import StockTicker from './StockTicker';
 import AnimatedChart from './AnimatedChart';
@@ -9,8 +9,8 @@ import AnimatedChart from './AnimatedChart';
 
 const STAT_CARDS = [
   { value: '10L+', label: 'Middle-Class Learners', icon: '👥', color: 'emerald' as const },
-  { value: '₹0',   label: 'Cost to Start',          icon: '🎯', color: 'gold'    as const },
-  { value: '500+', label: 'Stock Analyses',          icon: '📊', color: 'blue'   as const },
+  { value: '₹0',   label: 'Cost to Start',         icon: '🎯', color: 'gold'    as const },
+  { value: '500+', label: 'Stock Analyses',         icon: '📊', color: 'blue'   as const },
 ];
 
 const TRUSTED_BRANDS = ['Zerodha', 'Groww', 'Angel One', 'NSE', 'BSE'];
@@ -22,7 +22,6 @@ const colorMap = {
 };
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
-
 const HeroSection: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -33,83 +32,69 @@ const HeroSection: React.FC = () => {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse 100% 80% at 50% -5%, rgba(16,185,129,0.14) 0%, rgba(4,12,30,1) 55%), #020b1a',
+        background: 'radial-gradient(ellipse 100% 70% at 50% -5%, rgba(16,185,129,0.14) 0%, rgba(4,12,30,1) 55%), #020b1a',
       }}
     >
-      {/* ── Grid dot background ── */}
+      {/* Grid dot background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(circle, #10b981 1px, transparent 1px)`,
-          backgroundSize: '28px 28px',
-        }}
+        style={{ backgroundImage: `radial-gradient(circle, #10b981 1px, transparent 1px)`, backgroundSize: '28px 28px' }}
       />
+      {/* Ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-emerald-500/8 blur-[130px] pointer-events-none" />
 
-      {/* ── Ambient glows ── */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-emerald-500/8 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-64 h-64 rounded-full bg-teal-500/5 blur-[80px] pointer-events-none" />
-
-      {/* ════════════════════════════════════════════════
-          FULL-WIDTH LOGO BANNER — prominent at the top
-          ════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════
+          FULL-WIDTH LOGO BANNER
+          ══════════════════════════════════════════════ */}
       <div
-        className="relative w-full flex flex-col items-center justify-center pt-6 pb-4 sm:pt-8 sm:pb-6"
-        style={{ borderBottom: '1px solid rgba(16,185,129,0.12)' }}
+        className="relative w-full flex flex-col items-center justify-center pt-8 pb-6 sm:pt-10 sm:pb-8"
+        style={{ borderBottom: '1px solid rgba(16,185,129,0.1)' }}
       >
-        {/* Subtle banner bg */}
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(180deg, rgba(16,185,129,0.05) 0%, transparent 100%)' }}
-        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(16,185,129,0.06) 0%, transparent 100%)' }} />
 
         <motion.div
-          initial={{ opacity: 0, y: -20, scale: 0.92 }}
+          initial={{ opacity: 0, y: -16, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-          className="relative z-10 flex flex-col items-center gap-3"
+          className="relative z-10 flex flex-col items-center gap-4 text-center px-4"
         >
-          {/* Logo — large rectangle display */}
+          {/* Logo — full width, large, centered */}
           <img
             src={`${basePath}/logo.png`}
             alt="Knowledge Jaaz"
-            className="w-auto object-contain"
+            className="w-auto mx-auto"
             style={{
-              height: 'clamp(80px, 15vw, 180px)',
-              filter: 'drop-shadow(0 0 24px rgba(16,185,129,0.35)) drop-shadow(0 4px 20px rgba(0,0,0,0.6))',
+              height: 'clamp(90px, 18vw, 200px)',
+              filter: 'drop-shadow(0 0 30px rgba(16,185,129,0.4)) drop-shadow(0 6px 24px rgba(0,0,0,0.7))',
             }}
           />
 
-          {/* Tagline under logo */}
-          <p
-            className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase"
-            style={{ color: 'rgba(16,185,129,0.7)' }}
-          >
+          {/* Tagline */}
+          <p className="text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase text-center"
+            style={{ color: 'rgba(16,185,129,0.75)' }}>
             Stock Market Knowledge for Every Middle-Class Family
           </p>
 
-          {/* Decorative line */}
-          <div
-            className="w-32 sm:w-48 h-px mt-1"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.5), transparent)' }}
-          />
+          {/* Decorative divider */}
+          <div className="w-40 sm:w-64 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(16,185,129,0.45), transparent)' }} />
         </motion.div>
       </div>
 
-      {/* ════════════════════════════
-          MAIN HERO CONTENT
-          ════════════════════════════ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 py-10 sm:py-14 lg:py-16">
+      {/* ══════════════════════════════════════════════
+          HERO CONTENT — fully centered layout
+          ══════════════════════════════════════════════ */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="flex flex-col xl:flex-row items-center justify-center gap-12 py-12 sm:py-16 lg:py-20">
 
-          {/* ── LEFT: Text Content ── */}
-          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl w-full">
+          {/* ── LEFT / CENTER: Text ── */}
+          <div className="flex flex-col items-center xl:items-start text-center xl:text-left w-full xl:max-w-[580px]">
 
             {/* Live badge */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-xs font-semibold text-emerald-300"
+              transition={{ duration: 0.5, delay: 0.12 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-xs font-semibold text-emerald-300 mx-auto xl:mx-0"
               style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)' }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -118,26 +103,24 @@ const HeroSection: React.FC = () => {
 
             {/* Heading */}
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               <span className="text-white block">Learn Stock Market</span>
-              <span
-                className="block mt-1 bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent"
-              >
+              <span className="block mt-1 bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
                 the Smart Way
               </span>
             </motion.h1>
 
-            {/* Sub-text */}
+            {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.32 }}
-              className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed max-w-lg"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl mx-auto xl:mx-0"
             >
               Knowledge Jaaz helps{' '}
               <span className="text-emerald-400 font-semibold">middle-class families</span> learn
@@ -147,17 +130,17 @@ const HeroSection: React.FC = () => {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.42 }}
-              className="flex flex-col sm:flex-row gap-3 mt-7 w-full sm:w-auto"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-3 mt-8 w-full sm:w-auto justify-center xl:justify-start"
             >
               <motion.a
                 href="#learn"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="relative flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white overflow-hidden group w-full sm:w-auto"
-                style={{ background: 'linear-gradient(135deg, #10b981, #0d9488)' }}
+                className="relative flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white overflow-hidden group w-full sm:w-auto"
+                style={{ background: 'linear-gradient(135deg, #10b981, #0d9488)', boxShadow: '0 8px 32px rgba(16,185,129,0.35)' }}
               >
                 <span className="relative z-10">Start Learning Free →</span>
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -166,38 +149,36 @@ const HeroSection: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white w-full sm:w-auto"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}
+                className="flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl text-sm font-semibold text-white w-full sm:w-auto"
+                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.14)' }}
               >
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">▶</span>
+                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">▶</span>
                 Watch Demo
               </motion.button>
             </motion.div>
 
             {/* Stat Cards */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.52 }}
-              className="flex flex-row flex-wrap gap-3 mt-8 justify-center lg:justify-start"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-row flex-wrap gap-3 mt-8 justify-center xl:justify-start w-full"
             >
               {STAT_CARDS.map((card, i) => {
                 const c = colorMap[card.color];
                 return (
                   <motion.div
                     key={card.label}
-                    whileHover={{ y: -3, scale: 1.03 }}
+                    whileHover={{ y: -3, scale: 1.04 }}
                     animate={{ y: [0, -4, 0] }}
-                    transition={{
-                      y: { duration: 3 + i, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 },
-                    }}
-                    className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border bg-gradient-to-br ${c.gradient} ${c.border}`}
-                    style={{ minWidth: '130px' }}
+                    transition={{ y: { duration: 3 + i, repeat: Infinity, ease: 'easeInOut', delay: i * 0.5 } }}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl border bg-gradient-to-br ${c.gradient} ${c.border} backdrop-blur-sm`}
+                    style={{ minWidth: '145px' }}
                   >
-                    <span className="text-lg">{card.icon}</span>
+                    <span className="text-xl">{card.icon}</span>
                     <div>
-                      <div className={`text-lg font-extrabold ${c.text} leading-none`}>{card.value}</div>
-                      <div className="text-[10px] text-white/60 mt-0.5">{card.label}</div>
+                      <div className={`text-xl font-extrabold ${c.text} leading-none`}>{card.value}</div>
+                      <div className="text-[11px] text-white/55 mt-0.5">{card.label}</div>
                     </div>
                   </motion.div>
                 );
@@ -208,15 +189,17 @@ const HeroSection: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.75 }}
-              className="mt-8 flex flex-col items-center lg:items-start gap-2.5"
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="mt-8 flex flex-col items-center xl:items-start gap-3 w-full"
             >
-              <p className="text-[10px] text-slate-600 uppercase tracking-widest font-semibold">Trusted by investors using</p>
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+              <p className="text-[10px] text-slate-600 uppercase tracking-[0.2em] font-semibold">
+                Trusted by investors using
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center xl:justify-start">
                 {TRUSTED_BRANDS.map(name => (
                   <span
                     key={name}
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors duration-200 cursor-default"
+                    className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors duration-200 cursor-default"
                     style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
                   >
                     {name}
@@ -226,27 +209,26 @@ const HeroSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Chart (desktop only) ── */}
+          {/* ── RIGHT: Chart (xl screens only) ── */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
-            className="hidden lg:flex flex-1 flex-col items-center justify-center w-full max-w-lg relative"
+            className="hidden xl:flex flex-col items-center justify-center w-full max-w-[480px] relative flex-shrink-0"
           >
-            {/* Glow */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-80 h-80 rounded-full bg-emerald-500/8 blur-[80px]" />
+              <div className="w-80 h-80 rounded-full bg-emerald-500/8 blur-[90px]" />
             </div>
 
             {/* Markets Open badge */}
             <div
-              className="relative z-10 mb-3 self-start ml-3 flex items-center gap-2 px-3.5 py-2 rounded-xl"
+              className="relative z-10 mb-3 self-start ml-4 flex items-center gap-2 px-3.5 py-2 rounded-xl"
               style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)' }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-semibold text-emerald-300">Markets Open</span>
-              <span className="text-xs text-emerald-400/60">•</span>
-              <span className="text-xs font-mono text-emerald-400">NSE/BSE</span>
+              <span className="text-xs text-emerald-400/60 mx-1">•</span>
+              <span className="text-xs font-mono text-emerald-400">NSE / BSE</span>
             </div>
 
             {mounted && (
@@ -259,7 +241,7 @@ const HeroSection: React.FC = () => {
             <motion.div
               animate={{ y: [-4, 4, -4] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative z-10 mt-3 self-end mr-3 flex items-center gap-3 px-4 py-2.5 rounded-xl"
+              className="relative z-10 mt-4 self-end mr-4 flex items-center gap-3 px-4 py-3 rounded-xl"
               style={{ background: 'rgba(4,14,36,0.92)', border: '1px solid rgba(59,130,246,0.2)', maxWidth: '210px' }}
             >
               <span className="text-2xl">🚀</span>
@@ -270,10 +252,11 @@ const HeroSection: React.FC = () => {
               </div>
             </motion.div>
           </motion.div>
+
         </div>
       </div>
 
-      {/* ── Stock Ticker ── */}
+      {/* Stock Ticker */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -283,12 +266,12 @@ const HeroSection: React.FC = () => {
         <StockTicker />
       </motion.div>
 
-      {/* ── Scroll indicator ── */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
-        className="flex justify-center py-5"
+        className="flex justify-center py-6"
       >
         <motion.button
           animate={{ y: [0, 8, 0] }}
@@ -304,8 +287,8 @@ const HeroSection: React.FC = () => {
         </motion.button>
       </motion.div>
 
-      {/* Gradient bottom fade */}
-      <div className="absolute bottom-0 left-0 w-full h-16 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #020b1a)' }} />
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 w-full h-20 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #020b1a)' }} />
     </section>
   );
 };
